@@ -17,11 +17,11 @@ public class LightPipelineServiceImpl implements LightPipelineService {
     @Override
     public Map<String, List<String>> annotate(String input, String pretrainedModelName) {
 
-        CacheModels singletonCacheModels = CacheModels.getInstance();
-        Pretrained pretrainedModel = singletonCacheModels.getPretrainedModel(pretrainedModelName);
+        CacheModels cacheModels = CacheModels.getInstance();
+        Pretrained pretrainedModel = cacheModels.getPretrainedModel(pretrainedModelName);
 
-        PretrainedPipeline pretrainedPipeline = new PretrainedPipeline(pretrainedModel.getName(), pretrainedModel.getLanguage(),
-                pretrainedModel.getLocation(), false, Option.empty());
+        PretrainedPipeline pretrainedPipeline = new PretrainedPipeline(pretrainedModel.getName(),
+                pretrainedModel.getLanguage(), pretrainedModel.getLocation(), false, Option.empty());
 
         return pretrainedPipeline.annotateJava(input);
     }
