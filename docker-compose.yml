@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  jsl-light-nlp:
+    ports:
+      - "8080:8080"
+    container_name: jsl-light-nlp
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - SPARK_NLP_LICENSE=${SPARK_NLP_LICENSE}
+    build: .
