@@ -9,7 +9,8 @@ import java.util.Map;
 
 public class Models {
 
-    Map<String, Pretrained> pretrainedModels = new HashMap<>();
+    private final Map<String, Pretrained> pretrainedModels = new HashMap<>();
+    private final String language = "en";
 
     public Models() {
         loadPublicModels();
@@ -20,7 +21,6 @@ public class Models {
 
         Pretrained pretrained = new Pretrained();
         String publicModels = "public/models";
-        String language = "en";
 
         pretrained.setLanguage(language);
         pretrained.setLocation(publicModels);
@@ -31,15 +31,14 @@ public class Models {
         pretrained.setDescription("NER generic model with ALBERT embeddings");
 
         pretrainedModels.put(shortName, pretrained);
-        ResourceDownloader.downloadPipeline(modelName,
-                Option.apply(language), publicModels);
+        ResourceDownloader.downloadPipeline(pretrained.getName(), Option.apply(pretrained.getLanguage()),
+                pretrained.getLocation());
     }
 
     private void loadClinicalModels() {
 
         Pretrained pretrained = new Pretrained();
         String clinicalModels = "clinical/models";
-        String language = "en";
 
         pretrained.setLanguage(language);
         pretrained.setLocation(clinicalModels);
@@ -50,8 +49,8 @@ public class Models {
         pretrained.setDescription("DeIdentification clinical model");
 
         pretrainedModels.put(shortName, pretrained);
-        ResourceDownloader.downloadPipeline(modelName,
-                Option.apply(language), clinicalModels);
+        ResourceDownloader.downloadPipeline(pretrained.getName(), Option.apply(pretrained.getLanguage()),
+                pretrained.getLocation());
     }
 
     public Map<String, Pretrained> getPretrainedModels() {
