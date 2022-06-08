@@ -55,12 +55,12 @@
         <dependency>
             <groupId>com.johnsnowlabs.nlp</groupId>
             <artifactId>spark-nlp_2.12</artifactId>
-            <version>3.4.4a1</version>
+            <version>3.4.4</version>
         </dependency>
         <dependency>
             <groupId>com.johnsnowlabs.nlp.jsl</groupId>
             <artifactId>spark-nlp-jsl_2.12</artifactId>
-            <version>3.5.3rc3</version>
+            <version>3.5.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
         <dependency>
